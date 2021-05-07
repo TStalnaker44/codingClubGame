@@ -4,7 +4,7 @@ from polybius.graphics import Drawable
 
 class Board(Drawable):
 
-    def __init__(self, pos, tiles=None, colorMap=None, tileDims=(200,200),
+    def __init__(self, pos, tiles=None, colorMap=None, tileDims=(32,32),
                  tileMap=None):
 
         super().__init__("", pos)
