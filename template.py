@@ -9,30 +9,46 @@ from board import Board
 class ClubGame(AbstractGame):
 
     def __init__(self):
-        AbstractGame.__init__(self, (1000,600), "Game Title")
+
+        tileDims = (21,21)
+        tiles = [[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+                 [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+                 [3, 3, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 3, 3],
+                 [3, 3, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 3, 3],
+                 [3, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3],
+                 [3, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3],
+                 [3, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3],
+                 [3, 3, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 3, 3],
+                 [3, 3, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 3, 3],
+                 [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+                 [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]]
+        
+        
+        AbstractGame.__init__(self,
+                              (len(tiles[0])*tileDims[0], len(tiles)*tileDims[1]),
+                              "Game Title")
+
+        
+
         FRAMES.prepareImage("image.png", colorKey=True)
+        self._sprite = Sprite((100,100))
+        
         FRAMES.prepareImage("grassTile.png")
         FRAMES.prepareImage("stoneTile.png")
         FRAMES.prepareImage("brickTile.png")
-        self._sprite = Sprite((100,100))
-        tiles = [[2, 2, 2, 2, 2, 2,-1,-1,-1,-1, 2, 2, 2, 2, 2, 2],
-                 [2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2],
-                 [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
-                 [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
-                 [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
-                 [2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2],
-                 [2, 2, 2, 2, 2, 2,-1,-1,-1,-1, 2, 2, 2, 2, 2, 2]]
-        red = pygame.Surface((32,32))
-        red.fill((255,0,0))
+        FRAMES.prepareImage("waterTile.png")
+        
         tileMap = {0:FRAMES.getFrame("grassTile.png"),
                    1:FRAMES.getFrame("stoneTile.png"),
                    2:FRAMES.getFrame("brickTile.png"),
+                   3:FRAMES.getFrame("waterTile.png"),
                   -1:None}
-        self._board = Board((100,100), tiles, tileMap=tileMap, tileDims=(21,21))
+        
+        self._board = Board((0,0), tiles, tileMap=tileMap, tileDims=tileDims)
 
     def draw(self, screen):
-        self._sprite.draw(screen)
         self._board.draw(screen)
+        self._sprite.draw(screen)
         
     def handleEvent(self, event):
         self._sprite.handleEvent(event)
