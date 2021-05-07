@@ -13,17 +13,21 @@ class ClubGame(AbstractGame):
         FRAMES.prepareImage("image.png", colorKey=True)
         FRAMES.prepareImage("grassTile.png")
         FRAMES.prepareImage("stoneTile.png")
+        FRAMES.prepareImage("brickTile.png")
         self._sprite = Sprite((100,100))
-        tiles = [[-1,1,-1,0],
-                 [1,0,1,0],
-                 [0,1,0,0],
-                 [0,0,0,0],
-                 [0,0,0,0]]
+        tiles = [[2, 2, 2, 2, 2, 2,-1,-1,-1,-1, 2, 2, 2, 2, 2, 2],
+                 [2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2],
+                 [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+                 [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+                 [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+                 [2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2],
+                 [2, 2, 2, 2, 2, 2,-1,-1,-1,-1, 2, 2, 2, 2, 2, 2]]
         red = pygame.Surface((32,32))
         red.fill((255,0,0))
         tileMap = {0:FRAMES.getFrame("grassTile.png"),
-                    1:FRAMES.getFrame("stoneTile.png"),
-                    -1:None}
+                   1:FRAMES.getFrame("stoneTile.png"),
+                   2:FRAMES.getFrame("brickTile.png"),
+                  -1:None}
         self._board = Board((100,100), tiles, tileMap=tileMap, tileDims=(21,21))
 
     def draw(self, screen):
