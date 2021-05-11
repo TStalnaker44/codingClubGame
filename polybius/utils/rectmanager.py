@@ -9,12 +9,23 @@ import copy, pygame
 
 def getRects(image):
     """This fucntion gets the rects for an image."""
-    pxa = pygame.PixelArray(image)
-    transparent = pxa[0,0]
-    rects = []
-    scale = 1
-    rects, flag, count = [], False, 0
 
+    print("come on man")
+    pxa = pygame.PixelArray(image)
+    print(type(image))
+    print("but not this")
+    print(type(pxa))
+    print(pxa.shape)
+    transparent = (0,0,0)#pxa[0,0]
+    print("1")
+    rects = []
+    print("2")
+    scale = 1
+    print("3")
+    rects, flag, count = [], False, 0
+    print("4")
+
+    print("whats happening")
     for h in range(pxa.shape[1]):
         leftBound = 0
         inRect = False

@@ -112,13 +112,16 @@ class Drawable():
         return self._image.get_rect().move(self.getX(), self.getY())
 
     def getCollideRects(self):
+        print("This happened")
         if self.isFlipped():
             if self._flippedCollideRects == None:
                 self._flippedCollideRects = getRects(self._image)
             return self._flippedCollideRects
         else:
             if self._collideRects == None:
+                print("I bet this happens too")
                 self._collideRects = getRects(self._image)
+                print("but not this")
             return self._collideRects
 
     def collidesWith(self, other):
@@ -133,7 +136,9 @@ class Drawable():
         return False
 
     def collidesWithPoint(self, point):
+        print("Why")
         rects = self.getCollideRects()
+        print(len(rects))
         rects = moveRects(rects, self.getPosition())
         for r in rects:
             if r.collidepoint(point):

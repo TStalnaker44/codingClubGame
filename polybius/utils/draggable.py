@@ -30,11 +30,14 @@ class Draggable():
 
     def handleDraggingEvent(self, event):
         if self._draggingOn:
+            print("dragging")
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
+                    print("wee")
                     if self.collidesWithPoint(event.pos):
-                        self._previous = pygame.mouse.get_pos()
-                        self._dragging = True
+                        print("zip")
+                     #   self._previous = pygame.mouse.get_pos()
+                     #   self._dragging = True
             elif event.type == pygame.MOUSEBUTTONUP:
                 if event.button == 1:
                     self._dragging = False

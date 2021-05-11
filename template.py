@@ -6,6 +6,10 @@ from polybius.graphics import Drawable
 from polybius.utils.draggable import Draggable
 from board import Board
 
+# https://stackoverflow.com/questions/13218362/fatal-python-error-pygame-parachute-segmentation-fault-when-changing-window
+# Fatal Python: error: (pygame parachute) Segmentation Fault
+# Python runtime state: intialized
+
 class ClubGame(AbstractGame):
 
     def __init__(self):
@@ -32,6 +36,7 @@ class ClubGame(AbstractGame):
 
         FRAMES.prepareImage("image.png", colorKey=True)
         self._sprite = Sprite((100,100))
+        self._sprite.scale(1.5)
         
         FRAMES.prepareImage("grassTile.png")
         FRAMES.prepareImage("stoneTile.png")
@@ -63,6 +68,7 @@ class Sprite(Drawable, Draggable):
         Draggable.__init__(self)
 
     def handleEvent(self, event):
+        pass
         Draggable.handleDraggingEvent(self, event)
 
 g = ClubGame()
